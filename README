@@ -1,0 +1,40 @@
+
+
+# Desigualdad de género en el uso del tiempo para la actividad física
+
+## Equipo
+- Nombre del equipo: Salubrista
+- Integrantes: Julisa Ortiz Brunel, Atzimba Mabel Salgado Torres, Eduardo Pérez Castro
+
+## ODS elegido
+ODS 5: Igualdad de género
+
+## Descripción del proyecto
+Este tablero muestra la desigualdad de género en el uso del tiempo para la actividad física en México, usando datos de la ENUT (2015–2024). Incluye indicadores clave como la brecha en actividad física y trabajo doméstico no remunerado, y una visualización de tendencia por sexo.
+
+## Metadatos de los datos
+- **Fuente**: INEGI, Encuesta Nacional de Uso del Tiempo (ENUT)
+- **Fecha de descarga**: [05/04/2026]
+- **Licencia de los datos**: CC BY-SA
+- **Variables**: Año, Sexo, Actividad_Fisica, Trabajo_domestico, Cuidadores
+
+## Pregunta central
+¿Cómo afecta el trabajo doméstico no remunerado en la brecha de actividad física entre hombres y mujeres en México?
+
+## Narrativa del proyecto
+
+### Pregunta central
+¿Cómo afecta el trabajo doméstico no remunerado en la brecha de actividad física entre hombres y mujeres en México?
+
+Este proyecto se enmarca en el **ODS 5: Igualdad de género**.  
+Los datos provienen de la **Encuesta Nacional de Uso del Tiempo (ENUT, INEGI, 2015–2024)**.  
+La narrativa conecta directamente la desigualdad en la distribución del tiempo con la disponibilidad para realizar actividad física: las mujeres dedican más horas al trabajo doméstico no remunerado, lo que reduce su tiempo para ejercitarse.  
+El tablero muestra indicadores clave y una visualización de tendencia que evidencia esta relación.
+
+El tablero visibiliza un problema real en México: la desigualdad de género en el uso del tiempo afecta la salud y el bienestar de las mujeres.  
+La audiencia principal incluye investigadores, tomadores de decisiones y público interesado en políticas de género y salud.  
+El proyecto busca aportar evidencia clara para promover acciones que reduzcan estas brechas.
+
+
+## Licencia
+Este proyecto está bajo la licencia [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

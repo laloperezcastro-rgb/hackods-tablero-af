@@ -1,0 +1,125 @@
+---
+title: "Desigualdad de género en el uso del tiempo para la actividad física"
+format:
+  dashboard:
+    theme: cosmo
+    scrolling: false
+logo: images/logo.png
+---
+
+```{python}
+import pandas as pd
+import plotly.express as px
+
+df = pd.read_excel("ENUT_Historico.xlsx")
+df = df.sort_values("Year")
+
+# colores consistentes
+colors = {
+    "Hombres": "#2C5282",   # azul institucional serio
+    "Mujeres": "#C53030"     # rojo institucional sobrio
+}
+```
+
+
+
+```{python}
+#| results: hide
+
+last_year = int(df["Year"].max())
+
+df_last = df[df["Year"] == last_year]
+
+af = df_last.groupby("Sexo")["Actividad_Fisica"].mean()
+td = df_last.groupby("Sexo")["Trabajo_domestico"].mean()
+
+brecha_af = float(af["Hombres"] - af["Mujeres"])
+brecha_td = float(td["Mujeres"] - td["Hombres"])
+```
+
+::: {.sidebar}
+Este dashboard muestra:
+
+|              |                     |
+|--------------|---------------------|
+| **País**     | México              |
+| **Fuente**   | ENUT                |
+| **Periodo**  | 2015–2024           |
+
+---
+
+### 👥 Interpretación
+
+- Las mujeres dedican más tiempo a trabajo no remunerado  
+- Esto reduce su tiempo disponible para actividad física  
+
+---
+
+::: {.callout-note collapse="true"}
+## Nota
+Datos basados en encuestas de uso del tiempo (ENUT) del INEGI.
+:::
+:::
+
+## Row {height="20%"}
+### Column
+```{python}
+#| component: valuebox
+dict(icon="activity", value=f"{brecha_af:.1f}", title="Brecha AF (H-M)")
+```
+### Column
+```{python}
+#| component: valuebox
+dict(icon="calendar", color="primary", value=last_year, title="Último año")
+```
+### Column
+```{python}
+#| component: valuebox
+dict(icon="bar-chart", color="danger", value=round(brecha_td, 1), title="Brecha trabajo doméstico (M-H)")
+```
+
+## Row {height="40%"}   
+
+### Column {width="50%"}
+```{python}
+df_line = df.groupby(["Year", "Sexo"], as_index=False)["Actividad_Fisica"].mean()
+fig = px.line(df_line, x="Year", y="Actividad_Fisica", color="Sexo", markers=True,
+              title="Tendencia de actividad física por sexo",
+              color_discrete_map=colors)
+fig.update_layout(template="plotly", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                  xaxis_title="Año", yaxis_title="Horas promedio", legend_title="Sexo", height=450)
+fig.update_traces(line=dict(width=3))
+fig
+
+```
+
+### Column {width="50%"}
+
+```{python}
+# Datos del último año
+df_last = df[df["Year"] == last_year]
+df_cuidados_last = df_last.groupby("Sexo", as_index=False)["Cuidadores"].mean()
+
+# Gráfico de barras
+fig_cuidados_bar = px.bar(
+    df_cuidados_last, x="Sexo", y="Cuidadores", color="Sexo",
+    title=f"Tiempo en cuidados por sexo ({last_year})",
+    color_discrete_map=colors, text_auto=True
+)
+
+fig_cuidados_bar.update_layout(
+    template="simple_white",
+    xaxis_title="Sexo",
+    yaxis_title="Horas promedio",
+    legend_title="Sexo",
+    font=dict(size=12),
+    height=400
+)
+
+fig_cuidados_bar
+
+```
+
+
+
+
